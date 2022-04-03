@@ -32,7 +32,7 @@
                                placeholder="Phone:">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
                                placeholder="Email:">
                     </div>
                     <div class="mb-3">
@@ -42,8 +42,7 @@
                         <button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button>
                     </div>
                     <div id="emailHelp" class="form-text text-center mb-5 text-dark">Already registered? LogIn here <a
-                                href="{{ url('/login') }}" class="text-dark fw-bold"> Create an
-                            Account</a>
+                                href="{{ url('/login') }}" class="text-dark fw-bold">LogIn into your account</a>
                     </div>
                 </form>
             </div>

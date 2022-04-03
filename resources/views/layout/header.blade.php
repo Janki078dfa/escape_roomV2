@@ -23,12 +23,16 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
             </ul>
-            <form class="d-flex" style="margin-right: 30px; padding-top: 10px">
-                <a class="btn nav-link btn-dark header-logout text-white" href="{{ url('/login') }}">LogIn</a>
-            </form>
-            <form class="d-flex" style="padding-top: 10px" action="" method="post">
-                <button class="btn nav-link btn-dark header-logout text-white" type="submit">LogOut</button>
-            </form>
+            @guest
+                <form class="d-flex" style="margin-right: 30px; padding-top: 10px">
+                    <a class="btn nav-link btn-dark header-logout text-white" href="{{ url('/login') }}">LogIn</a>
+                </form>
+            @else
+                <form class="d-flex" style="padding-top: 10px" action="{{ url('LogOutController') }}" method="post">
+                    @csrf
+                    <button class="btn nav-link btn-dark header-logout text-white" type="submit">LogOut</button>
+                </form>
+            @endguest
         </div>
     </div>
 </nav>
