@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Game\GameController;
+use App\Http\Controllers\User\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +16,8 @@ use App\Http\Controllers\Game\GameController;
 */
 
 Route::view('/', 'home');
+Route::view('/login', 'user/auth/login');
+Route::view('/register', 'user/auth/register');
 
 Route::get('/', [GameController::class, 'index']);
+Route::post('RegisterController', [RegisterController::class, 'register']);

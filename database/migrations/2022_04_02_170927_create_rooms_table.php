@@ -12,12 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
-            $table->integer('players');
-            $table->timestamps();
+            $table->date('date');
+            $table->boolean('available');
+            $table->foreignId('game_id')->constrained('games');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('rooms');
     }
 };

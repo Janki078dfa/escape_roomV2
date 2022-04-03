@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Room;
 use App\Models\User;
 use App\Models\Game;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,5 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(3)->create();
         Game::factory(3)->create();
+        Room::factory(3)->create();
+        $this->call(RoleTableSeeder::class);
     }
 }

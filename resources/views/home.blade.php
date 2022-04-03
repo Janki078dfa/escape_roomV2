@@ -1,15 +1,24 @@
 @include('layout.header')
+<div class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Welcome back, nom_usuari</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Book your escape room here!</p>
+        </div>
+    </div>
+</div>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <!-- Games foreach -->
             @forelse($games as $g)
-                <div class="col mb-5">
+                <div class="col mb-5 w-75 h-50">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="/storage/images/{{ $g->image }}" alt="Game image"/>
+                        <img style="object-fit: cover; height: 500px" class="card-img-top"
+                             src="/storage/images/{{ $g->image }}" alt="Game image"/>
                         <!-- Product details-->
-                        <div class="card-body p-4">
+                        <div class="card-body p-5" style="height: 250px">
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ $g->name }}</h5>
