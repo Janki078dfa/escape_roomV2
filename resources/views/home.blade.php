@@ -2,7 +2,12 @@
 <div class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Welcome back, nom_usuari</h1>
+            @if(isset($user->name))
+                <h1 class="display-4 fw-bolder">Welcome back, {{ $user->name }}</h1>
+            @else
+                <h1 class="display-4 fw-bolder"><a href="/login">LogIn here!</a></h1>
+            @endif
+
             <p class="lead fw-normal text-white-50 mb-0">Book your escape room here!</p>
         </div>
     </div>

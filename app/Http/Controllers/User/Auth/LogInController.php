@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class LogInController extends Controller
@@ -18,7 +19,7 @@ class LogInController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))):
-            Session::put(User::find('email'));
+            Session::put('user', DB::table('users')->where('email', $request->only('email'))->first());
             return redirect('/');
         endif;
 

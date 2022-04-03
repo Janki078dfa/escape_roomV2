@@ -10,9 +10,9 @@ class LogOutController extends Controller
 {
     public function logOut()
     {
-        dd(Session::all());
+        //dd(Session::all());
         Session::flush();
         Auth::logout();
-        //return redirect('/');
+        return redirect('/');
     }
 }
