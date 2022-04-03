@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Auth;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
@@ -8,11 +8,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class CreateUserController extends Controller
 {
-    public function register(Request $request)
+
+    public function create_user(Request $request)
     {
         $data = $request->all();
+
         $request->validate([
             'name' => 'required',
             'id_number' => 'required',
@@ -28,7 +30,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
-        $user->roles()->attach(Role::where('name', 'user')->first());
-        return $user;
+
+        $user->roles()->attach(Role::where('name', $data['form-select'])->first());
+        return redirect('/');
     }
 }

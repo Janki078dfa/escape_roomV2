@@ -7,7 +7,8 @@
             @endif
             @if(isset($user->name))
                 <h1 class="display-4 fw-bolder">Welcome back, {{ $user->name }}</h1>
-            @else
+            @endif
+            @if (!isset($admin) and !isset($user))
                 <h1 class="display-4 fw-bolder"><a href="/login">LogIn here!</a></h1>
             @endif
 
