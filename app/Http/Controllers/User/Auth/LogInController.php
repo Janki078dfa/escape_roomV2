@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LogInController extends Controller
 {
@@ -15,9 +17,11 @@ class LogInController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password'))):
+            Session::put(User::find('email'));
             return redirect('/');
-        }
+        endif;
+
 
         return redirect("/login")->withSuccess('Login details are not valid');
     }
