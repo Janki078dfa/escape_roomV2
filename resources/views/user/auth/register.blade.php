@@ -20,11 +20,23 @@
                     </div>
 
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="Username" aria-describedby="emailHelp"
-                               placeholder="User Name">
+                        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+                               placeholder="Name:">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="password">
+                        <input type="text" class="form-control" id="id_number" name="id_number" aria-describedby="emailHelp"
+                               placeholder="DNI:">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="phone" name="phone" aria-describedby="emailHelp"
+                               placeholder="Phone:">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                               placeholder="Email:">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password:">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button>

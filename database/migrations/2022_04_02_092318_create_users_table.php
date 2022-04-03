@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('phone', 9)->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 
