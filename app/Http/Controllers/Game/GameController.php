@@ -11,6 +11,6 @@ class GameController extends Controller
     public function index()
     {
         $games = Game::all();
-        return view('home')->with(['games' => $games, 'user' => Session::get('user')]);
+        return view('home')->with(['games' => $games, 'user' => Session::get('user'), 'admin' => Session::get('admin')]);
     }
 }

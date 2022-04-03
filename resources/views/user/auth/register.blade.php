@@ -22,9 +22,15 @@
                     <div class="mb-3">
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
                                placeholder="Name:">
+                        @if($errors->any())
+                            @foreach($errors as $e)
+                                <p style="color: red;">{{ $e }}</p>
+                            @endforeach
+                        @endif
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="id_number" name="id_number" aria-describedby="emailHelp"
+                        <input type="text" class="form-control" id="id_number" name="id_number"
+                               aria-describedby="emailHelp"
                                placeholder="DNI:">
                     </div>
                     <div class="mb-3">
@@ -36,7 +42,8 @@
                                placeholder="Email:">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password:">
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Password:">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button>

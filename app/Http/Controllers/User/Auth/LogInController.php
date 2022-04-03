@@ -19,7 +19,15 @@ class LogInController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))):
-            Session::put('user', DB::table('users')->where('email', $request->only('email'))->first());
+            $user = User::find(Auth::id());
+            if ($user->hasRole('user')):
+                Session::put('user', $user);
+            endif;
+
+            if ($user->hasRole('admin')):
+                Session::put('admin', $user);
+            endif;
+
             return redirect('/');
         endif;
 
