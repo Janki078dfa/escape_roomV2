@@ -34,7 +34,7 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">Rooms</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Manage rooms</a></li>
+                            <li><a class="dropdown-item" href="/rooms">Manage rooms</a></li>
                             <li><a class="dropdown-item" href="#!">Create rooms</a></li>
                         </ul>
                     </li>

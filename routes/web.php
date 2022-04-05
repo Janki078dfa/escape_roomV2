@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Game\GameController;
+use App\Http\Controllers\Game\ManageGameController;
 use App\Http\Controllers\User\Auth\RegisterController;
 use App\Http\Controllers\User\Auth\LogInController;
 use App\Http\Controllers\User\Auth\LogOutController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\ManageUserController;
+use App\Http\Controllers\Room\ManageRoomController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +25,17 @@ use App\Http\Controllers\User\ManageUserController;
 Route::view('/', 'home');
 Route::view('/login', 'user/auth/login');
 Route::view('/register', 'user/auth/register');
-Route::view('/create_user', 'user/create_user');
+Route::view('/rooms', 'room/room');
+
+Route::get('/create_user', function () {
+    return view('user/create_user')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
+});
+
 Route::view('/manage_user', 'user/manage_user');
 
 
-Route::get('/', [GameController::class, 'index']);
+Route::get('/', [ManageGameController::class, 'index']);
+Route::get('/rooms', [ManageRoomController::class, 'index']);
 Route::get('/manage_user', [ManageUserController::class, 'index']);
 
 
@@ -35,3 +43,7 @@ Route::post('RegisterController', [RegisterController::class, 'register']);
 Route::post('LogInController', [LogInController::class, 'logIn']);
 Route::post('LogOutController', [LogOutController::class, 'logOut']);
 Route::post('CreateUserController', [CreateUserController::class, 'create_user']);
+Route::post('ManageUserController', [ManageUserController::class, 'manage_user']);
+Route::post('EditUserController', [ManageUserController::class, 'edit_user']);
+Route::post('ManageRoomController', [ManageRoomController::class, 'manage_room']);
+Route::post('EditRoomController', [ManageRoomController::class, 'edit_room']);

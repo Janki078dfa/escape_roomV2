@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class CreateUserController extends Controller
 {
@@ -32,6 +33,6 @@ class CreateUserController extends Controller
         ]);
 
         $user->roles()->attach(Role::where('name', $data['form-select'])->first());
-        return redirect('/');
+        return redirect('/')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
     }
 }

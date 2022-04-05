@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Game;
 use Illuminate\Support\Facades\Session;
 
-class GameController extends Controller
+class ManageGameController extends Controller
 {
     public function index()
     {

@@ -1,0 +1,54 @@
+@include('layout.header')
+<div class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Create User</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card my-5">
+                <form class="card-body cardbody-color p-lg-5" action="{{ url('EditRoomController') }}" method="post">
+                    @csrf
+                    <div class="text-center">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
+                             class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                             width="200px" alt="profile">
+                    </div>
+                    <input type="hidden" value="{{ $room->id }}" name="id">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+                               placeholder="Name:" value="{{ $room->name }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="date" class="form-control" id="id_number" name="id_number"
+                               aria-describedby="emailHelp"
+                               placeholder="DNI:" value="{{ $room->date }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <select name="form-select" class="form-select" aria-label="Default select example">
+                            <option selected>Select the game you want to assign:</option>
+                            @foreach($rooms as $r)
+                                <option id="{{ $r->game_id }}" value="{{ $r->game_id }}"
+                                        name="{{ $r->game_id }}">{{ \App\Http\Controllers\Room\ManageRoomController::get_game($r->game_id)}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
+                    <div class="text-center">
+                        <button style="background: lightsalmon" type="submit" class="btn btn-color px-5 mb-5 w-100">
+                            Edit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+@include('layout.footer')
