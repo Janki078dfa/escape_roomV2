@@ -14,19 +14,22 @@ class ManageRoomController extends Controller
     public function index()
     {
         $rooms = Room::all();
-        return view('/room.room')->with(['rooms' => $rooms, 'user' => Session::get('user'), 'admin' => Session::get('admin')]);
+        $games = Game::all();
+        return view('/room.room')->with(['games' => $games, 'rooms' => $rooms, 'user' => Session::get('user'), 'admin' => Session::get('admin')]);
     }
 
     public function manage_room(Request $request)
     {
         if ($request->only('delete')):
-            Room::destroy($request->only('user_id'));
+            Room::destroy($request->only('id'));
+        return redirect('/rooms');
         endif;
 
         if ($request->only('edit')):
             $room = DB::table('rooms')->where('id', $request->only('room_id'))->get()->first();
             $rooms = Room::all();
-            return view('room.edit_room')->with(['room' => $room, 'rooms' => $rooms]);
+            $games = Game::all();
+            return view('room.edit_room')->with(['games' => $games, 'room' => $room, 'rooms' => $rooms, 'user' => Session::get('user'), 'admin' => Session::get('admin')]);
         endif;
 
         return redirect('/rooms')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
@@ -34,7 +37,13 @@ class ManageRoomController extends Controller
 
     public function edit_room(Request $request)
     {
-        dd($request->all());
+        $name = $request->only('name');
+        $date = $request->only('date');
+        $game_id = $request->only('form-select');
+
+        $room = DB::table('rooms')->where('id', $request->only('id'));
+        $room->update(['name' => $name['name'], 'date' => $date['date'], 'game_id' => $game_id['form-select']]);
+        return redirect('/rooms')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
     }
 
     public static function get_game($id)

@@ -2,7 +2,7 @@
 <div class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Create User</h1>
+            <h1 class="display-4 fw-bolder">Edit Room</h1>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <input type="date" class="form-control" id="id_number" name="id_number"
+                        <input type="date" class="form-control" id="date" name="date"
                                aria-describedby="emailHelp"
                                placeholder="DNI:" value="{{ $room->date }}">
                     </div>
@@ -32,9 +32,9 @@
                     <div class="mb-3">
                         <select name="form-select" class="form-select" aria-label="Default select example">
                             <option selected>Select the game you want to assign:</option>
-                            @foreach($rooms as $r)
-                                <option id="{{ $r->game_id }}" value="{{ $r->game_id }}"
-                                        name="{{ $r->game_id }}">{{ \App\Http\Controllers\Room\ManageRoomController::get_game($r->game_id)}}</option>
+                            @foreach($games as $g)
+                                <option id="{{ $g->id }}" value="{{ $g->id }}"
+                                        name="{{ $g->id }}">{{ \App\Http\Controllers\Room\ManageRoomController::get_game($g->id)}}</option>
                             @endforeach
 
                         </select>
