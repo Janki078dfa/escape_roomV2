@@ -31,6 +31,10 @@ Route::get('/create_user', function () {
     return view('user/create_user')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
 });
 
+Route::get('/create_room', function () {
+    return view('room.create_room')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
+});
+
 Route::view('/manage_user', 'user/manage_user');
 
 
@@ -47,3 +51,4 @@ Route::post('ManageUserController', [ManageUserController::class, 'manage_user']
 Route::post('EditUserController', [ManageUserController::class, 'edit_user']);
 Route::post('ManageRoomController', [ManageRoomController::class, 'manage_room']);
 Route::post('EditRoomController', [ManageRoomController::class, 'edit_room']);
+Route::post('CreateRoomController', [ManageRoomController::class, 'create_room']);

@@ -9,6 +9,14 @@ class Room extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'date',
+        'available',
+        'game_id',
+    ];
+
+
     protected $table = "rooms";
     public $timestamps = false;
 

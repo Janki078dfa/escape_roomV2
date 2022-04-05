@@ -35,7 +35,7 @@
                            data-bs-toggle="dropdown" aria-expanded="false">Rooms</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/rooms">Manage rooms</a></li>
-                            <li><a class="dropdown-item" href="#!">Create rooms</a></li>
+                            <li><a class="dropdown-item" href="/create_room">Create rooms</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
