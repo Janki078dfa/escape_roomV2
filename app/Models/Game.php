@@ -10,4 +10,10 @@ class Game extends Model
     use HasFactory;
 
     protected $table = "games";
+/*
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
+*/
 }

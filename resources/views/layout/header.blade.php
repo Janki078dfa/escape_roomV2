@@ -50,8 +50,8 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">Bookings</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Manage bookings</a></li>
-                            <li><a class="dropdown-item" href="#!">Create bookings</a></li>
+                            <li><a class="dropdown-item" href="/bookings">Manage bookings</a></li>
+                            <li><a class="dropdown-item" href="/create_booking">Create bookings</a></li>
                         </ul>
                     </li>
                 @endif

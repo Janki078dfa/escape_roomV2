@@ -42,4 +42,10 @@ class ManageUserController extends Controller
         $user->update(['name' => $name['name'], 'dni' => $dni['id_number'], 'phone' => $phone['phone'], 'email' => $email['email']]);
         return redirect('/manage_user')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
     }
+
+    public static function get_game($id)
+    {
+        $user = User::find($id);
+        return $user->name;
+    }
 }

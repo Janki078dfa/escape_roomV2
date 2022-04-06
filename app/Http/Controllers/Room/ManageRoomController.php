@@ -69,4 +69,10 @@ class ManageRoomController extends Controller
         $game = Game::find($id);
         return $game->name;
     }
+
+    public static function get_room($id)
+    {
+        $game = Room::find($id);
+        return $game->name;
+    }
 }

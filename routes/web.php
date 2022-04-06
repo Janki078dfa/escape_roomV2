@@ -8,6 +8,7 @@ use App\Http\Controllers\User\Auth\LogOutController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\ManageUserController;
 use App\Http\Controllers\Room\ManageRoomController;
+use App\Http\Controllers\Booking\ManageBookingController;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -39,24 +40,36 @@ Route::get('/create_game', function () {
     return view('game.create_game')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
 });
 
+Route::get('/create_booking', function () {
+    return view('booking.create_booking')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
+});
+
 Route::view('/manage_user', 'user/manage_user');
 
 
 Route::get('/', [ManageGameController::class, 'index']);
 Route::get('/rooms', [ManageRoomController::class, 'index']);
 Route::get('/games', [ManageGameController::class, 'view']);
+Route::get('/bookings', [ManageBookingController::class, 'index']);
 Route::get('/manage_user', [ManageUserController::class, 'index']);
 
 
 Route::post('RegisterController', [RegisterController::class, 'register']);
 Route::post('LogInController', [LogInController::class, 'logIn']);
 Route::post('LogOutController', [LogOutController::class, 'logOut']);
+
 Route::post('CreateUserController', [CreateUserController::class, 'create_user']);
 Route::post('ManageUserController', [ManageUserController::class, 'manage_user']);
 Route::post('EditUserController', [ManageUserController::class,  'edit_user']);
+
 Route::post('ManageRoomController', [ManageRoomController::class, 'manage_room']);
 Route::post('EditRoomController', [ManageRoomController::class, 'edit_room']);
 Route::post('CreateRoomController', [ManageRoomController::class, 'create_room']);
+
 Route::post('ManageGameController', [ManageGameController::class, 'manage_game']);
 Route::post('EditGameController', [ManageGameController::class, 'edit_game']);
 Route::post('CreateGameController', [ManageGameController::class, 'create_game']);
+
+Route::post('ManageBookingController', [ManageBookingController::class, 'manage_booking']);
+Route::post('EditBookingController', [ManageBookingController::class, 'edit_booking']);
+Route::post('CreateBookingController', [ManageBookingController::class, 'create_booking']);
