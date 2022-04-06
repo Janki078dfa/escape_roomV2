@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('name');
             $table->date('date');
             $table->boolean('available');
-            $table->foreignId('game_id')->constrained('games');
+            $table->foreignId('game_id')->nullable()->constrained('games')->onDelete(null);
         });
     }
 

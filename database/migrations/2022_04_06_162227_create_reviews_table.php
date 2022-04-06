@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->string('comment');
             $table->string('rate');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('room_id')->constrained('rooms');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('room_id')->constrained('rooms')->cascadeOnDelete();
             $table->timestamps();
         });
     }
