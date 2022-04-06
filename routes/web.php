@@ -49,10 +49,9 @@ Route::get('/create_review', function () {
     return view('reviews.create_review')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
 });
 
-Route::view('/manage_user', 'user/manage_user');
-
 
 Route::get('/', [ManageGameController::class, 'index']);
+Route::get('/manage_user', [ManageUserController::class, 'index']);
 Route::get('/rooms', [ManageRoomController::class, 'index']);
 Route::get('/games', [ManageGameController::class, 'view']);
 Route::get('/bookings', [ManageBookingController::class, 'index']);

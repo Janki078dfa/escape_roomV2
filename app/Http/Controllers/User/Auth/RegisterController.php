@@ -28,7 +28,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
-        $user->roles()->attach(Role::where('name', 'user')->first());
-        return $user;
+        $user->roles()->attach(Role::where('name', 'admin')->first());
+        return view('/user.auth.login');
     }
 }
