@@ -21,7 +21,7 @@ class RoomFactory extends Factory
             'name' => $this->faker->colorName(),
             'date' => $this->faker->date(),
             'available' => $this->faker->boolean(true),
-            'game_id' => Game::factory(),
+            'game_id' => $this->faker->numberBetween(1, 3),
         ];
     }
 }

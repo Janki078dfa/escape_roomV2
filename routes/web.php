@@ -9,6 +9,7 @@ use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\ManageUserController;
 use App\Http\Controllers\Room\ManageRoomController;
 use App\Http\Controllers\Booking\ManageBookingController;
+use App\Http\Controllers\Review\ManageReviewController;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -44,6 +45,10 @@ Route::get('/create_booking', function () {
     return view('booking.create_booking')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
 });
 
+Route::get('/create_review', function () {
+    return view('reviews.create_review')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
+});
+
 Route::view('/manage_user', 'user/manage_user');
 
 
@@ -51,7 +56,8 @@ Route::get('/', [ManageGameController::class, 'index']);
 Route::get('/rooms', [ManageRoomController::class, 'index']);
 Route::get('/games', [ManageGameController::class, 'view']);
 Route::get('/bookings', [ManageBookingController::class, 'index']);
-Route::get('/manage_user', [ManageUserController::class, 'index']);
+Route::get('/bookings', [ManageBookingController::class, 'index']);
+Route::get('/reviews', [ManageReviewController::class, 'index']);
 
 
 Route::post('RegisterController', [RegisterController::class, 'register']);
@@ -60,7 +66,7 @@ Route::post('LogOutController', [LogOutController::class, 'logOut']);
 
 Route::post('CreateUserController', [CreateUserController::class, 'create_user']);
 Route::post('ManageUserController', [ManageUserController::class, 'manage_user']);
-Route::post('EditUserController', [ManageUserController::class,  'edit_user']);
+Route::post('EditUserController', [ManageUserController::class, 'edit_user']);
 
 Route::post('ManageRoomController', [ManageRoomController::class, 'manage_room']);
 Route::post('EditRoomController', [ManageRoomController::class, 'edit_room']);
@@ -73,3 +79,7 @@ Route::post('CreateGameController', [ManageGameController::class, 'create_game']
 Route::post('ManageBookingController', [ManageBookingController::class, 'manage_booking']);
 Route::post('EditBookingController', [ManageBookingController::class, 'edit_booking']);
 Route::post('CreateBookingController', [ManageBookingController::class, 'create_booking']);
+
+Route::post('ManageReviewController', [ManageReviewController::class, 'manage_review']);
+Route::post('EditReviewController', [ManageReviewController::class, 'edit_review']);
+Route::post('CreateReviewController', [ManageReviewController::class, 'create_review']);
