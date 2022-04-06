@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Booking;
 use App\Models\Room;
 use App\Models\User;
 use App\Models\Game;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         User::factory(3)->create();
         Game::factory(3)->create();
         Room::factory(3)->create();
+        Booking::factory(3)->create();
         $this->call(RoleTableSeeder::class);
     }
 }
