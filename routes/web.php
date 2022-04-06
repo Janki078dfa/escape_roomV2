@@ -35,11 +35,16 @@ Route::get('/create_room', function () {
     return view('room.create_room')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
 });
 
+Route::get('/create_game', function () {
+    return view('game.create_game')->with(['user' => Session::get('user'), 'admin' => Session::get('admin')]);
+});
+
 Route::view('/manage_user', 'user/manage_user');
 
 
 Route::get('/', [ManageGameController::class, 'index']);
 Route::get('/rooms', [ManageRoomController::class, 'index']);
+Route::get('/games', [ManageGameController::class, 'view']);
 Route::get('/manage_user', [ManageUserController::class, 'index']);
 
 
@@ -48,7 +53,10 @@ Route::post('LogInController', [LogInController::class, 'logIn']);
 Route::post('LogOutController', [LogOutController::class, 'logOut']);
 Route::post('CreateUserController', [CreateUserController::class, 'create_user']);
 Route::post('ManageUserController', [ManageUserController::class, 'manage_user']);
-Route::post('EditUserController', [ManageUserController::class, 'edit_user']);
+Route::post('EditUserController', [ManageUserController::class,  'edit_user']);
 Route::post('ManageRoomController', [ManageRoomController::class, 'manage_room']);
 Route::post('EditRoomController', [ManageRoomController::class, 'edit_room']);
 Route::post('CreateRoomController', [ManageRoomController::class, 'create_room']);
+Route::post('ManageGameController', [ManageGameController::class, 'manage_game']);
+Route::post('EditGameController', [ManageGameController::class, 'edit_game']);
+Route::post('CreateGameController', [ManageGameController::class, 'create_game']);

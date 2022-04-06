@@ -42,8 +42,8 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">Games</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Manage games</a></li>
-                            <li><a class="dropdown-item" href="#!">Create games</a></li>
+                            <li><a class="dropdown-item" href="/games">Manage games</a></li>
+                            <li><a class="dropdown-item" href="/create_game">Create games</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
