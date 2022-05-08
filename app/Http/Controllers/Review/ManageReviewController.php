@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\Reviews;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -52,14 +53,26 @@ class ManageReviewController extends Controller
     {
         $data = $request->all();
 
+        if (isset($admin->name)):
+            $booking = Reviews::create([
+                'comment' => $data['name'],
+                'rate' => $data['rate'],
+                'user_id' => $data['user-select'],
+                'room_id' => $data['room-select'],
+            ]);
+
+            $booking->save();
+            return redirect('/reviews');
+        endif;
+
         $booking = Reviews::create([
             'comment' => $data['name'],
             'rate' => $data['rate'],
-            'user_id' => $data['user-select'],
+            'user_id' => Auth::id(),
             'room_id' => $data['room-select'],
         ]);
 
         $booking->save();
-        return redirect('/reviews');
+        return redirect('/');
     }
 }

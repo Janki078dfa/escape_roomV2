@@ -8,6 +8,7 @@ use App\Models\Game;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -57,20 +58,31 @@ class ManageBookingController extends Controller
     {
         $data = $request->all();
 
-        if (isset($user->name)):
-
+        if (isset($admin->name)):
+            $booking = Booking::create([
+                'name' => $data['name'],
+                'company' => $data['organization'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'country' => $data['country'],
+                'user_id' => $data['user-select'],
+                'room_id' => $data['room-select'],
+            ]);
+            $booking->save();
+            return redirect('/bookings');
         endif;
+
         $booking = Booking::create([
             'name' => $data['name'],
             'company' => $data['organization'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'country' => $data['country'],
-            'user_id' => $data['user-select'],
+            'user_id' => Auth::id(),
             'room_id' => $data['room-select'],
         ]);
 
         $booking->save();
-        return redirect('/bookings');
+        return redirect('/');
     }
 }
