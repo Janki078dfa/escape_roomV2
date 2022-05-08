@@ -28,15 +28,17 @@
                                placeholder="Rate:">
                     </div>
 
-                    <div class="mb-3">
-                        <select name="user-select" class="form-select" aria-label="Default select example">
-                            <option selected>Select the user you want to assign:</option>
-                            @foreach(\App\Models\User::all() as $u)
-                                <option id="{{ $u->id }}" value="{{ $u->id }}"
-                                        name="{{ $u->id }}">{{ \App\Http\Controllers\User\ManageUserController::get_game($u->id)}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @if(isset($admin->name))
+                        <div class="mb-3">
+                            <select name="user-select" class="form-select" aria-label="Default select example">
+                                <option selected>Select the user you want to assign:</option>
+                                @foreach(\App\Models\User::all() as $u)
+                                    <option id="{{ $u->id }}" value="{{ $u->id }}"
+                                            name="{{ $u->id }}">{{ \App\Http\Controllers\User\ManageUserController::get_game($u->id)}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
                     <div class="mb-3">
                         <select name="room-select" class="form-select" aria-label="Default select example">
                             <option selected>Select the game you want to assign:</option>

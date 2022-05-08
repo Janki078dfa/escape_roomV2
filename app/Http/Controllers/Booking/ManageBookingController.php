@@ -57,6 +57,9 @@ class ManageBookingController extends Controller
     {
         $data = $request->all();
 
+        if (isset($user->name)):
+
+        endif;
         $booking = Booking::create([
             'name' => $data['name'],
             'company' => $data['organization'],

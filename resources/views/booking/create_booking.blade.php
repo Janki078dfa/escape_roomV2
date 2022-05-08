@@ -45,6 +45,7 @@
                                placeholder="Country:">
                     </div>
 
+                    @if(isset($admin->name))
                     <div class="mb-3">
                         <select name="user-select" class="form-select" aria-label="Default select example">
                             <option selected>Select the user you want to assign:</option>
@@ -54,6 +55,7 @@
                             @endforeach
                         </select>
                     </div>
+                    @endif
                     <div class="mb-3">
                         <select name="room-select" class="form-select" aria-label="Default select example">
                             <option selected>Select the game you want to assign:</option>
